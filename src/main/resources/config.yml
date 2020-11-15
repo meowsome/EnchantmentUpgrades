@@ -1,0 +1,128 @@
+chatPrefix: "&8[&eEnchantment Upgrades&8]"
+mainMenuTitle: "Enchantment Upgrades"
+confirmMenuTitle: "Confirm Enchantment Upgrade"
+confirmItem: "green_stained_glass_pane"
+cancelItem: "red_stained_glass_pane"
+
+#Tools that can have their enchantments upgraded
+validTools:
+  - wooden_hoe
+  - stone_hoe
+  - golden_hoe
+  - iron_hoe
+  - diamond_hoe
+  - netherite_hoe
+  - wooden_pickaxe
+  - stone_pickaxe
+  - golden_pickaxe
+  - iron_pickaxe
+  - diamond_pickaxe
+  - netherite_pickaxe
+  - wooden_axe
+  - stone_axe
+  - golden_axe
+  - iron_axe
+  - diamond_axe
+  - netherite_axe
+  - wooden_sword
+  - stone_sword
+  - golden_sword
+  - iron_sword
+  - diamond_sword
+  - netherite_sword
+  - wooden_shovel
+  - stone_shovel
+  - golden_shovel
+  - iron_shovel
+  - diamond_shovel
+  - netherite_shovel
+
+#These values are multiplied by the level of the current enchantment to create the cost (multiplier * level = upgrade cost).
+#The plugin should be able to detect custom enchants registered by other enchantments if they are correctly registered. For example, enchantments from the Enchantment Solution plugin are detected.
+upgradeCostMultipliers:
+  "efficiency": 1.0
+  "fortune": 5.0
+  "unbreaking": 2.0
+  "width_plus_plus": 500.0
+  "height_plus_plus": 500.0
+  default: 50.0
+
+#Items that represent enchantments in the menu
+enchantmentItemRepresentations:
+  "sharpness": "iron_sword"
+  "bane_of_arthropods": "spider_eye"
+  "knockback": "stick"
+  "smite": "zombie_head"
+  "fire_aspect": "blaze_powder"
+  "looting": "iron_ingot"
+  "sweeping_edge": "stone_axe"
+  "efficiency": "clock"
+  "fortune": "diamond"
+  "silk_touch": "diamond_ore"
+  "power": "golden_apple"
+  "flame": "magma_cream"
+  "punch": "piston"
+  "infinity": "spectral_arrow"
+  "luck_of_the_sea": "enchanted_book"
+  "lure": "fishing_rod"
+  "loyalty": "prismarine_crystals"
+  "impaling": "trident"
+  "riptide": "tube_coral"
+  "channeling": "campfire"
+  "quick_charge": "crossbow"
+  "multishot": "tipped_arrow"
+  "piercing": "arrow"
+  "unbreaking": "nether_star"
+  "mending": "book"
+  "curse_of_vanishing": "paper"
+  "angler": "tropical_fish"
+  "beheading": "player_head"
+  "brine": "redstone"
+  "butcher": "porkchop"
+  "curse_of_contagion": "potion"
+  "curse_of_exhaustion": "lantern"
+  "curse_of_stagnancy": "brick_wall"
+  "detonator": "creeper_head"
+  "drowned": "water_bucket"
+  "exp_share": "experience_bottle"
+  "flower_gift": "poppy"
+  "force_feed": "cooked_porkchop"
+  "fried": "cooked_cod"
+  "gold_digger": "gold_ingot"
+  "gung_ho": "diamond_sword"
+  "height_plus_plus": "prismarine_wall"
+  "width_plus_plus": "prismarine_slab"
+  "hollow_point": "chainmail_helmet"
+  "husbandry": "wheat"
+  "knock_up": "ladder"
+  "overkill": "rotten_flesh"
+  "pillage": "emerald"
+  "quick_strike": "glowstone_dust"
+  "recycler": "composter"
+  "sand_veil": "sand"
+  "shock_aspect": "firework_rocket"
+  "smeltery": "furnace"
+  "sniper": "bow"
+  "soulbound": "soul_sand"
+  "soup_reaper": "iron_axe"
+  "splatter_fest": "snowball"
+  "sticky_hold": "honeycomb"
+  "stone_throw": "feather"
+  "telepathy": "end_portal_frame"
+  "transmutation": "heart_of_the_sea"
+  default: "red_concrete"
+
+#Set custom max levels for enchantments. If an enchantment max level is unset, the vanilla default value is used.
+maximumEnchantmentLevels:
+  #Set max levels for tools that players "craft"
+  crafted:
+    "efficiency": 250
+    "fortune": 30
+    "unbreaking": 300
+  #Set max levels for tools that players "receive" either by winning them or purchasing them
+  received:
+    "efficiency": 175
+    "fortune": 20
+    "unbreaking": 200
+    "width_plus_plus": 2
+    "height_plus_plus": 2
