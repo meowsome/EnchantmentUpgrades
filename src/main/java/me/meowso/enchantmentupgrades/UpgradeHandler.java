@@ -49,6 +49,6 @@ public class UpgradeHandler {
 
     public boolean canUpgrade (Player player, Enchantment enchantment) {
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
-        return enchantmentUtility.isValidTool(itemInHand) && itemInHand.containsEnchantment(enchantment) && itemInHand.getEnchantmentLevel(enchantment) < enchantmentUtility.getEnchantmentMaximumLevel(enchantment);
+        return enchantmentUtility.isValidTool(itemInHand) && itemInHand.containsEnchantment(enchantment) && itemInHand.getEnchantmentLevel(enchantment) < enchantmentUtility.getEnchantmentMaximumLevel(enchantment) && player.hasPermission("enchantmentupgrades.upgrade");
     }
 }

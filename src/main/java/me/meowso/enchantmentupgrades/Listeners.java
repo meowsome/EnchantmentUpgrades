@@ -41,6 +41,9 @@ public class Listeners implements Listener {
         Action action = event.getAction();
         ItemStack item = player.getInventory().getItemInMainHand();
 
+        // Cancel if player doesn't have valid permissions
+        if (!player.hasPermission("enchantmentupgrades.upgrade")) return;
+
         if ((action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) && enchantmentUtility.isValidTool(item)) {
             if (player.isSneaking())  {
                 if (item.getEnchantments().isEmpty()) player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.RED + "There are no enchantments on this item"));

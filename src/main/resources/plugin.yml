@@ -5,3 +5,7 @@ api-version: 1.16
 authors: [meowsome]
 description: Minecraft Spigot plugin to upgrade enchantments on any tool with a menu using Vault
 depend: [Vault]
+permissions:
+  enchantmentupgrades.upgrade:
+    description: Allow users to upgrade enchantments
+    default: true
