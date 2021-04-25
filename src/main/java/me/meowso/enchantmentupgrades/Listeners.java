@@ -90,7 +90,7 @@ public class Listeners implements Listener {
                 if (upgradeCostUtility.hasEnoughMoney(player, enchantment)) {
                     menuHandler.displayUpgradeConfirmationMenu(player, enchantment, itemClicked);
                 } else {
-                    menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, "You do not have enough gems.");
+                    menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, "You do not have enough " + config.getString("currencyNamePlural") + ".");
                 }
             } else {
                 menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, "This enchantment upgrade cannot take place.");

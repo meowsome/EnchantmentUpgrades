@@ -43,7 +43,8 @@ public class MenuHandler {
             lore.add("");
             lore.add(ChatColor.GRAY + "Current Level: " + ChatColor.WHITE + enchantmentLevel + ChatColor.GRAY + "/" + ChatColor.WHITE + enchantmentUtility.getEnchantmentMaximumLevel(enchantment));
             if (enchantmentLevel < enchantmentUtility.getEnchantmentMaximumLevel(enchantment)) {
-                lore.add(ChatColor.GRAY + "Upgrade Cost: " + ChatColor.GREEN + upgradeCostUtility.calculateUpgradeCost(enchantmentLevel, enchantment) + "♦"); //make cost dynamic
+                String cost = String.valueOf(upgradeCostUtility.calculateUpgradeCost(enchantmentLevel, enchantment));
+                lore.add(ChatColor.translateAlternateColorCodes('&', ChatColor.GRAY + "Upgrade Cost: " + config.getString("currencySymbolFormat").replace("x", cost))); //make cost dynamic
                 lore.add("");
                 lore.add(ChatColor.GRAY + "Click to upgrade to level " + ChatColor.WHITE + (enchantmentLevel + 1));
             } else {
@@ -85,7 +86,8 @@ public class MenuHandler {
         infoItemLore.add(ChatColor.GRAY + "Item: " + ChatColor.WHITE + itemInHand.getItemMeta().getDisplayName());
         infoItemLore.add(ChatColor.GRAY + "Enchantment: " + ChatColor.WHITE + enchantmentName);
         infoItemLore.add(ChatColor.GRAY + "Level Upgrade: " + ChatColor.WHITE + level + ChatColor.GRAY + " → " + ChatColor.WHITE + (level + 1));
-        infoItemLore.add(ChatColor.GRAY + "Cost: " + ChatColor.GREEN + upgradeCostUtility.calculateUpgradeCost(level, enchantment) + "♦");
+        String cost = String.valueOf(upgradeCostUtility.calculateUpgradeCost(level, enchantment));
+        infoItemLore.add(ChatColor.translateAlternateColorCodes('&', ChatColor.GRAY + "Cost: " + config.getString("currencySymbolFormat").replace("x", cost)));
         infoItemMeta.setLore(infoItemLore);
         itemClicked.setItemMeta(infoItemMeta);
         inventory.setItem(4, itemClicked);

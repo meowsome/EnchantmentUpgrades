@@ -3,6 +3,8 @@ mainMenuTitle: "Enchantment Upgrades"
 confirmMenuTitle: "Confirm Enchantment Upgrade"
 confirmItem: "green_stained_glass_pane"
 cancelItem: "red_stained_glass_pane"
+currencyNamePlural: "money" #The plural name of your currency (e.g. money, dollars, coins)
+currencySymbolFormat: "&6$x" #The color, symbol, and format of your currency. The "x" represents the amount and will be replaced (e.g. &6$x = $1.00 in gold, &ax€ = 1.00€ in lime)
 
 #Tools that can have their enchantments upgraded
 validTools:

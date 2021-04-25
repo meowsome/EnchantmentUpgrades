@@ -36,7 +36,7 @@ public class UpgradeHandler {
                 itemInHand.removeEnchantment(enchantment);
                 itemInHand.addUnsafeEnchantment(enchantment, level + 1);
 
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("chatPrefix")) + " " + ChatColor.WHITE + enchantmentUtility.getFancyEnchantmentName(enchantment) + ChatColor.GRAY + " on " + ChatColor.WHITE + itemInHand.getItemMeta().getDisplayName() + ChatColor.GRAY + " has been upgraded to level " + ChatColor.WHITE + (level + 1) + ChatColor.GRAY + " for " + ChatColor.GREEN + cost + "♦" + ChatColor.GRAY + ".");
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("chatPrefix") + " " + ChatColor.WHITE + enchantmentUtility.getFancyEnchantmentName(enchantment) + ChatColor.GRAY + " on " + ChatColor.WHITE + itemInHand.getItemMeta().getDisplayName() + ChatColor.GRAY + " has been upgraded to level " + ChatColor.WHITE + (level + 1) + ChatColor.GRAY + " for " + config.getString("currencySymbolFormat").replace("x", String.valueOf(cost) + ChatColor.GRAY + ".")));
                 menuHandler.displayUpgradeMenu(player);
             } else {
                 menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, "This enchantment upgrade cannot take place.");
