@@ -1,5 +1,6 @@
 package me.meowso.enchantmentupgrades;
 
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -17,10 +18,10 @@ public class MenuHandler {
     private final EnchantmentUtility enchantmentUtility;
     private final UpgradeCostUtility upgradeCostUtility;
 
-    public MenuHandler(EnchantmentUpgrades enchantmentUpgrades) {
+    public MenuHandler(EnchantmentUpgrades enchantmentUpgrades, Economy economy) {
         config = enchantmentUpgrades.getConfig();
         enchantmentUtility = new EnchantmentUtility(enchantmentUpgrades);
-        upgradeCostUtility = new UpgradeCostUtility(enchantmentUpgrades);
+        upgradeCostUtility = new UpgradeCostUtility(enchantmentUpgrades, economy);
     }
 
     public void displayUpgradeMenu(Player player) {

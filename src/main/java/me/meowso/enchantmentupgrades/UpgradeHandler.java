@@ -1,6 +1,7 @@
 package me.meowso.enchantmentupgrades;
 
-import me.xanium.gemseconomy.api.GemsEconomyAPI;
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
@@ -8,17 +9,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class UpgradeHandler {
-    private final GemsEconomyAPI gemsEconomyAPI = new GemsEconomyAPI();
+    private final Economy economy;
     private final MenuHandler menuHandler;
     private final UpgradeCostUtility upgradeCostUtility;
     private final EnchantmentUtility enchantmentUtility;
     private final FileConfiguration config;
 
-    public UpgradeHandler(EnchantmentUpgrades enchantmentUpgrades) {
-        this.menuHandler = new MenuHandler(enchantmentUpgrades);
-        this.upgradeCostUtility = new UpgradeCostUtility(enchantmentUpgrades);
+    public UpgradeHandler(EnchantmentUpgrades enchantmentUpgrades, Economy economy) {
+        this.menuHandler = new MenuHandler(enchantmentUpgrades, economy);
+        this.upgradeCostUtility = new UpgradeCostUtility(enchantmentUpgrades, economy);
         this.enchantmentUtility = new EnchantmentUtility(enchantmentUpgrades);
         this.config = enchantmentUpgrades.getConfig();
+        this.economy = economy;
     }
 
     public void upgradeEnchantment (Player player, ItemStack itemClicked, int itemClickedIndex) {
@@ -30,7 +32,7 @@ public class UpgradeHandler {
                 int level = itemInHand.getEnchantmentLevel(enchantment);
                 int cost = upgradeCostUtility.calculateUpgradeCost(level, enchantment);
 
-                gemsEconomyAPI.withdraw(player.getUniqueId(), cost);
+                economy.withdrawPlayer(Bukkit.getOfflinePlayer(player.getUniqueId()), cost);
                 itemInHand.removeEnchantment(enchantment);
                 itemInHand.addUnsafeEnchantment(enchantment, level + 1);
 

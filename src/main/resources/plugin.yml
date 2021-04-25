@@ -3,5 +3,5 @@ version: ${project.version}
 main: me.meowso.enchantmentupgrades.EnchantmentUpgrades
 api-version: 1.16
 authors: [meowsome]
-description: Minecraft Spigot plugin to ugrade enchantments on any tool with a menu using GemsEconomy
-depend: [GemsEconomy]
+description: Minecraft Spigot plugin to upgrade enchantments on any tool with a menu using Vault
+depend: [Vault]

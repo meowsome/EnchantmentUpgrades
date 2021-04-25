@@ -2,6 +2,7 @@ package me.meowso.enchantmentupgrades;
 
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -22,13 +23,15 @@ public class Listeners implements Listener {
     private final MenuHandler menuHandler;
     private final EnchantmentUtility enchantmentUtility;
     private final UpgradeCostUtility upgradeCostUtility;
+    private final Economy economy;
 
-    public Listeners(EnchantmentUpgrades enchantmentUpgrades) {
+    public Listeners(EnchantmentUpgrades enchantmentUpgrades, Economy economy) {
         config = enchantmentUpgrades.getConfig();
-        upgradeHandler = new UpgradeHandler(enchantmentUpgrades);
-        menuHandler = new MenuHandler(enchantmentUpgrades);
+        upgradeHandler = new UpgradeHandler(enchantmentUpgrades, economy);
+        menuHandler = new MenuHandler(enchantmentUpgrades, economy);
         enchantmentUtility = new EnchantmentUtility(enchantmentUpgrades);
-        upgradeCostUtility = new UpgradeCostUtility(enchantmentUpgrades);
+        upgradeCostUtility = new UpgradeCostUtility(enchantmentUpgrades, economy);
+        this.economy = economy;
     }
 
     // Detect right-clicking an item
