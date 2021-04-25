@@ -119,3 +119,5 @@ run/
 
 #more
 dependencies/
+MANIFEST.MF
+pom.xml
