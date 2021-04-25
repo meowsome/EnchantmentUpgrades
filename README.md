@@ -1,5 +1,5 @@
 # EnchantmentUpgrades
 
-Enchantment Upgrades plugin for the Nogard Minecraft server. Uses the [GemsEconomy API](https://github.com/Xanium1/GemsEconomy/tree/master/src/main/java/me/xanium/gemseconomy/api).
+Enchantment Upgrades plugin for the Nogard Minecraft server. Uses the [Vault API](https://github.com/MilkBowl/VaultAPI).
 
 Initially created August 2020.
