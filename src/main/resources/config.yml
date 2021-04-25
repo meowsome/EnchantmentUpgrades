@@ -114,15 +114,6 @@ enchantmentItemRepresentations:
 
 #Set custom max levels for enchantments. If an enchantment max level is unset, the vanilla default value is used.
 maximumEnchantmentLevels:
-  #Set max levels for tools that players "craft"
-  crafted:
-    "efficiency": 250
-    "fortune": 30
-    "unbreaking": 300
-  #Set max levels for tools that players "receive" either by winning them or purchasing them
-  received:
-    "efficiency": 175
-    "fortune": 20
-    "unbreaking": 200
-    "width_plus_plus": 2
-    "height_plus_plus": 2
+  "efficiency": 250
+  "fortune": 30
+  "unbreaking": 300

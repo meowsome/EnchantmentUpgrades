@@ -52,15 +52,10 @@ public class EnchantmentUtility {
         return ChatColor.stripColor(enchantmentName.toLowerCase().replaceAll(" ", "_"));
     }
 
-    public int getEnchantmentMaximumLevel(Enchantment enchantment, ItemStack item) {
+    public int getEnchantmentMaximumLevel(Enchantment enchantment) {
         int maxLevel = enchantment.getMaxLevel();
         String enchantmentName = getDefaultEnchantmentNameFromEnchantment(enchantment);
-        Map<String, Object> maxLevelsOfTools;
-        Repairable repairInfo = (Repairable) item.getItemMeta();
-
-        // Get different max level depending on if user received or crafted the tool
-        if (repairInfo.getRepairCost() < 40) maxLevelsOfTools = config.getConfigurationSection("maximumEnchantmentLevels.crafted").getValues(false);
-        else maxLevelsOfTools = config.getConfigurationSection("maximumEnchantmentLevels.received").getValues(false);
+        Map<String, Object> maxLevelsOfTools = config.getConfigurationSection("maximumEnchantmentLevels").getValues(false);
 
         if (maxLevelsOfTools.containsKey(enchantmentName)) maxLevel = (int) maxLevelsOfTools.get(enchantmentName);
 

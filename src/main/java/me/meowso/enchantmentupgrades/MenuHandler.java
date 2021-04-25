@@ -41,8 +41,8 @@ public class MenuHandler {
 
             List<String> lore = new ArrayList<>();
             lore.add("");
-            lore.add(ChatColor.GRAY + "Current Level: " + ChatColor.WHITE + enchantmentLevel + ChatColor.GRAY + "/" + ChatColor.WHITE + enchantmentUtility.getEnchantmentMaximumLevel(enchantment, item));
-            if (enchantmentLevel < enchantmentUtility.getEnchantmentMaximumLevel(enchantment, item)) {
+            lore.add(ChatColor.GRAY + "Current Level: " + ChatColor.WHITE + enchantmentLevel + ChatColor.GRAY + "/" + ChatColor.WHITE + enchantmentUtility.getEnchantmentMaximumLevel(enchantment));
+            if (enchantmentLevel < enchantmentUtility.getEnchantmentMaximumLevel(enchantment)) {
                 lore.add(ChatColor.GRAY + "Upgrade Cost: " + ChatColor.GREEN + upgradeCostUtility.calculateUpgradeCost(enchantmentLevel, enchantment) + "♦"); //make cost dynamic
                 lore.add("");
                 lore.add(ChatColor.GRAY + "Click to upgrade to level " + ChatColor.WHITE + (enchantmentLevel + 1));
