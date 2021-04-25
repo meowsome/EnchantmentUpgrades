@@ -33,7 +33,11 @@ public class EnchantmentUtility {
 
     // Gets enchantment name to be displayed (e.g. changes minecraft:silk_touch to Silk Touch)
     public String getFancyEnchantmentName(Enchantment enchantment) {
-        String[] nameSplit = getDefaultEnchantmentNameFromEnchantment(enchantment).split("_");
+        return capitilizeFirstChars(getDefaultEnchantmentNameFromEnchantment(enchantment));
+    }
+
+    public String capitilizeFirstChars(String string) {
+        String[] nameSplit = string.toLowerCase().split("_");
 
         for (int i = 0; i < nameSplit.length; i++) {
             nameSplit[i] = nameSplit[i].substring(0, 1).toUpperCase() + nameSplit[i].substring(1);
@@ -72,5 +76,9 @@ public class EnchantmentUtility {
         String itemRepresentationString = (itemRepresentations.containsKey(enchantmentName)) ? (String) itemRepresentations.get(enchantmentName) : config.getString("enchantmentItemRepresentations.default");
         
         return Material.getMaterial(itemRepresentationString.toUpperCase());
+    }
+
+    public String getItemName(ItemStack item) {
+        return item.getItemMeta().hasDisplayName() ? item.getItemMeta().getDisplayName() : capitilizeFirstChars(item.getType().name());
     }
 }

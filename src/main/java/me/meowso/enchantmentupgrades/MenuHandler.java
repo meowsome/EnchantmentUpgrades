@@ -83,7 +83,7 @@ public class MenuHandler {
         infoItemMeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Upgrade " + enchantmentName);
         List<String> infoItemLore = new ArrayList<>();
         infoItemLore.add("");
-        infoItemLore.add(ChatColor.GRAY + "Item: " + ChatColor.WHITE + itemInHand.getItemMeta().getDisplayName());
+        infoItemLore.add(ChatColor.GRAY + "Item: " + ChatColor.WHITE + enchantmentUtility.getItemName(itemInHand));
         infoItemLore.add(ChatColor.GRAY + "Enchantment: " + ChatColor.WHITE + enchantmentName);
         infoItemLore.add(ChatColor.GRAY + "Level Upgrade: " + ChatColor.WHITE + level + ChatColor.GRAY + " → " + ChatColor.WHITE + (level + 1));
         String cost = String.valueOf(upgradeCostUtility.calculateUpgradeCost(level, enchantment));
