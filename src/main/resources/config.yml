@@ -85,3 +85,5 @@ maximumEnchantmentLevels:
   efficiency: 250
   fortune: 30
   unbreaking: 300
+
+checkForUpdates: true
