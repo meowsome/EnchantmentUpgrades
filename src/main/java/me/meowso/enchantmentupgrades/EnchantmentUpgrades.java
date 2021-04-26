@@ -6,6 +6,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.IOException;
 
 public final class EnchantmentUpgrades extends JavaPlugin {
+    private int bstatsId = 11151;
+
     @Override
     public void onEnable() {
         Economy economy = setupVault();
@@ -23,6 +25,8 @@ public final class EnchantmentUpgrades extends JavaPlugin {
         } catch (IOException e) {
             getLogger().warning("Error occurred checking for updates");
         }
+
+        new Metrics(this, bstatsId);
     }
 
     private void updateChecker() throws IOException {
