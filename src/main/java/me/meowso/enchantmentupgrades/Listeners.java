@@ -57,19 +57,19 @@ public class Listeners implements Listener {
     // Handle clicking in a menu
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        String title = ChatColor.stripColor(event.getView().getTitle());
+        String title = event.getView().getTitle();
 
-        if (title.equals(ChatColor.stripColor(config.getString("mainMenuTitle"))) || title.equals(ChatColor.stripColor(config.getString("confirmMenuTitle")))) {
+        if (title.equals(ChatColor.translateAlternateColorCodes('&', config.getString("mainMenuTitle"))) || title.equals(ChatColor.translateAlternateColorCodes('&', config.getString("confirmMenuTitle")))) {
             event.setCancelled(true);
 
             Player player = (Player) event.getWhoClicked();
             ItemStack itemClicked = event.getCurrentItem();
             int itemClickedIndex = event.getSlot();
 
-            if (itemClicked != null && itemClicked.hasItemMeta() && event.getSlotType() == SlotType.CONTAINER && !itemClicked.getItemMeta().getDisplayName().contains(config.getString("errorTitleMessage"))) {
-                if (title.equals(ChatColor.stripColor(config.getString("mainMenuTitle")))) {
+            if (itemClicked != null && itemClicked.hasItemMeta() && event.getSlotType() == SlotType.CONTAINER && !itemClicked.getItemMeta().getDisplayName().contains(ChatColor.translateAlternateColorCodes('&', config.getString("errorTitleMessage")))) {
+                if (title.equals(ChatColor.translateAlternateColorCodes('&', config.getString("mainMenuTitle")))) {
                     handleEnchantmentUpgradeMenuClick(player, itemClicked, itemClickedIndex);
-                } else if (title.equals(ChatColor.stripColor(config.getString("confirmMenuTitle")))) {
+                } else if (title.equals(ChatColor.translateAlternateColorCodes('&', config.getString("confirmMenuTitle")))) {
                     handleEnchantmentUpgradeConfirmationMenuClick(player, itemClicked, itemClickedIndex);
                 }
             }
@@ -79,7 +79,7 @@ public class Listeners implements Listener {
     // Prevent inventory dragging
     @EventHandler
     public void onInventoryDrag(InventoryDragEvent event) {
-        if (ChatColor.stripColor(event.getView().getTitle()).equals(ChatColor.stripColor(config.getString("mainMenuTitle")))) {
+        if (event.getView().getTitle().equals(ChatColor.translateAlternateColorCodes('&', config.getString("mainMenuTitle")))) {
             event.setCancelled(true);
         }
     }
