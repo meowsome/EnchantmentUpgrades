@@ -3,6 +3,9 @@ mainMenuTitle: "Enchantment Upgrades"
 confirmMenuTitle: "Confirm Enchantment Upgrade"
 currencyNamePlural: "money" #The plural name of your currency (e.g. money, dollars, coins)
 currencySymbolFormat: "&6$x" #The color, symbol, and format of your currency. The "x" represents the amount and will be replaced (e.g. &6$x = $1.00 in gold, &ax€ = 1.00€ in lime)
+confirmedUpgradeMessage: "&f$0&7 on &f$1&7 has been upgraded to level &f$2&7 for &f$3&7." # $0 = enchantment name, $1 = item name, $2 = level, $3 = cost (same as currencySymbolFormat)
+noEnchantmentsOnItemMessage: "&cThere are no enchantments on this item"
+clickTooltipMessage: "&7Shift + right click to view the Enchantment Upgrades Menu"
 
 #Tools that can have their enchantments upgraded
 validTools:

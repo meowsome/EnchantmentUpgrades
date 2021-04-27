@@ -46,10 +46,10 @@ public class Listeners implements Listener {
 
         if ((action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) && enchantmentUtility.isValidTool(item)) {
             if (player.isSneaking())  {
-                if (item.getEnchantments().isEmpty()) player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.RED + "There are no enchantments on this item"));
+                if (item.getEnchantments().isEmpty()) player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.translateAlternateColorCodes('&', config.getString("noEnchantmentsOnItemMessage"))));
                 else menuHandler.displayUpgradeMenu(player);
             } else {
-                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.GRAY + "Shift + right click to view the Enchantment Upgrades Menu"));
+                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.translateAlternateColorCodes('&', config.getString("clickTooltipMessage"))));
             }
         }
     }
