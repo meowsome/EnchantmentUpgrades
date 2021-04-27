@@ -1,8 +1,6 @@
 chatPrefix: "&8[&eEnchantment Upgrades&8]"
 mainMenuTitle: "Enchantment Upgrades"
 confirmMenuTitle: "Confirm Enchantment Upgrade"
-confirmItem: "green_stained_glass_pane" #Block to be used in the confirm menu to represent accepting
-cancelItem: "red_stained_glass_pane" #Block to be used in the confirm menu to represent cancelling
 currencyNamePlural: "money" #The plural name of your currency (e.g. money, dollars, coins)
 currencySymbolFormat: "&6$x" #The color, symbol, and format of your currency. The "x" represents the amount and will be replaced (e.g. &6$x = $1.00 in gold, &ax€ = 1.00€ in lime)
 
@@ -79,6 +77,8 @@ enchantmentItemRepresentations:
   angler: "tropical_fish"
   width_plus_plus: "prismarine_slab" #Example for EnchantmentSolution
   default: "red_concrete"
+confirmItem: "green_stained_glass_pane" #Block to be used in the confirm menu to represent accepting
+cancelItem: "red_stained_glass_pane" #Block to be used in the confirm menu to represent cancelling
 
 #Set custom max levels for enchantments. If an enchantment max level is unset, the vanilla default value is used.
 maximumEnchantmentLevels:
