@@ -25,7 +25,7 @@ public class UpgradeHandler {
 
     public void upgradeEnchantment (Player player, ItemStack itemClicked, int itemClickedIndex) {
         try {
-            Enchantment enchantment = enchantmentUtility.getEnchantmentByName(player, player.getOpenInventory().getItem(4).getItemMeta().getDisplayName().replace("Upgrade ", "")); // Get enchantment from the title of the informational item in the confirm menu
+            Enchantment enchantment = enchantmentUtility.getEnchantmentByName(player, player.getOpenInventory().getItem(4).getItemMeta().getDisplayName().replace(config.getString("upgradeEnchantNameTitleMessage").replace("$0" ,""), "")); // Get enchantment from the title of the informational item in the confirm menu
 
             if (canUpgrade(player, enchantment)) {
                 ItemStack itemInHand = player.getInventory().getItemInMainHand();
@@ -43,10 +43,10 @@ public class UpgradeHandler {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("chatPrefix") + " " + config.getString("confirmedUpgradeMessage").replace("$0", enchantName).replace("$1", itemName).replace("$2", levelName).replace("$3", costName)));
                 menuHandler.displayUpgradeMenu(player);
             } else {
-                menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, "This enchantment upgrade cannot take place.");
+                menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, config.getString("errorInvalidUpgrade"));
             }
         } catch (Exception e) {
-            menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, "An error occurred determining the enchantment.");
+            menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, config.getString("errorDeterminingEnchantMessage"));
             throw e;
         }
     }

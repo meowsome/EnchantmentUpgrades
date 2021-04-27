@@ -41,16 +41,22 @@ public class MenuHandler {
 
             List<String> lore = new ArrayList<>();
             lore.add("");
-            lore.add(ChatColor.GRAY + "Current Level: " + ChatColor.WHITE + enchantmentLevel + ChatColor.GRAY + "/" + ChatColor.WHITE + enchantmentUtility.getEnchantmentMaximumLevel(enchantment));
+
+            String enchantLevelString = String.valueOf(enchantmentLevel);
+            String maxEnchantLevelString = String.valueOf(enchantmentUtility.getEnchantmentMaximumLevel(enchantment));
+            lore.add(ChatColor.translateAlternateColorCodes('&', config.getString("enchantmentUpgradeLevelString").replace("$0", enchantLevelString).replace("$1", maxEnchantLevelString)));
+
             if (enchantmentLevel < enchantmentUtility.getEnchantmentMaximumLevel(enchantment)) {
                 String cost = String.valueOf(upgradeCostUtility.calculateUpgradeCost(enchantmentLevel, enchantment));
-                lore.add(ChatColor.translateAlternateColorCodes('&', ChatColor.GRAY + "Upgrade Cost: " + config.getString("currencySymbolFormat").replace("x", cost))); //make cost dynamic
+                String costFormattedString = config.getString("costToUpgradeString").replace("$0", config.getString("currencySymbolFormat").replace("x", cost));
+                String levelToUpgradeToString = config.getString("levelToUpgradeToString").replace("$0", String.valueOf(enchantmentLevel + 1));
+
+                lore.add(ChatColor.translateAlternateColorCodes('&', costFormattedString)); //make cost dynamic
                 lore.add("");
-                lore.add(ChatColor.GRAY + "Click to upgrade to level " + ChatColor.WHITE + (enchantmentLevel + 1));
+                lore.add(ChatColor.translateAlternateColorCodes('&', levelToUpgradeToString));
             } else {
                 lore.add("");
-                lore.add(ChatColor.RED + "You have reached the maximum");
-                lore.add(ChatColor.RED + "level for this enchantment.");
+                lore.add(ChatColor.translateAlternateColorCodes('&', config.getString("errorMaxLevelMessage")));
             }
             itemMeta.setLore(lore);
 
@@ -71,7 +77,7 @@ public class MenuHandler {
 
         ItemStack confirmItem = new ItemStack(Material.getMaterial(config.getString("confirmItem").toUpperCase()));
         ItemMeta confirmItemMeta = confirmItem.getItemMeta();
-        confirmItemMeta.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Confirm Upgrade");
+        confirmItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', config.getString("confirmUpgradeMessage")));
         confirmItem.setItemMeta(confirmItemMeta);
         inventory.setItem(0, confirmItem);
         inventory.setItem(1, confirmItem);
@@ -80,21 +86,22 @@ public class MenuHandler {
 
         ItemMeta infoItemMeta = itemClicked.getItemMeta();
         infoItemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        infoItemMeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.BOLD + "Upgrade " + enchantmentName);
+        infoItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', config.getString("upgradeEnchantNameTitleMessage").replace("$0", enchantmentName)));
         List<String> infoItemLore = new ArrayList<>();
         infoItemLore.add("");
-        infoItemLore.add(ChatColor.GRAY + "Item: " + ChatColor.WHITE + enchantmentUtility.getItemName(itemInHand));
-        infoItemLore.add(ChatColor.GRAY + "Enchantment: " + ChatColor.WHITE + enchantmentName);
-        infoItemLore.add(ChatColor.GRAY + "Level Upgrade: " + ChatColor.WHITE + level + ChatColor.GRAY + " → " + ChatColor.WHITE + (level + 1));
+        infoItemLore.add(ChatColor.translateAlternateColorCodes('&', config.getString("upgradeItemNameMessage").replace("$0", enchantmentUtility.getItemName(itemInHand))));
+        infoItemLore.add(ChatColor.translateAlternateColorCodes('&', config.getString("upgradeEnchantNameMessage").replace("$0", enchantmentName)));
+        infoItemLore.add(ChatColor.translateAlternateColorCodes('&', config.getString("upgradeLevelMessage").replace("$0", String.valueOf(level)).replace("$1", String.valueOf(level + 1))));
         String cost = String.valueOf(upgradeCostUtility.calculateUpgradeCost(level, enchantment));
-        infoItemLore.add(ChatColor.translateAlternateColorCodes('&', ChatColor.GRAY + "Cost: " + config.getString("currencySymbolFormat").replace("x", cost)));
+        String costFormatString = config.getString("currencySymbolFormat").replace("x", cost);
+        infoItemLore.add(ChatColor.translateAlternateColorCodes('&', config.getString("upgradeCostMessage").replace("$0", costFormatString)));
         infoItemMeta.setLore(infoItemLore);
         itemClicked.setItemMeta(infoItemMeta);
         inventory.setItem(4, itemClicked);
 
         ItemStack cancelItem = new ItemStack(Material.getMaterial(config.getString("cancelItem").toUpperCase()));
         ItemMeta cancelItemMeta = cancelItem.getItemMeta();
-        cancelItemMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Cancel Upgrade");
+        cancelItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', config.getString("upgradeCancelTitleMessage")));
         cancelItem.setItemMeta(cancelItemMeta);
         inventory.setItem(5, cancelItem);
         inventory.setItem(6, cancelItem);
@@ -108,11 +115,11 @@ public class MenuHandler {
         ItemMeta oldItemMeta = item.getItemMeta();
         ItemMeta newItemMeta = item.getItemMeta();
 
-        newItemMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Error");
+        newItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', config.getString("errorTitleMessage")));
 
         List<String> lore = new ArrayList<>();
         lore.add("");
-        lore.add(ChatColor.RED + message);
+        lore.add(ChatColor.translateAlternateColorCodes('&', message));
         newItemMeta.setLore(lore);
 
         item.setItemMeta(newItemMeta);
@@ -125,7 +132,7 @@ public class MenuHandler {
             public void run()
             {
                 // Check if the user has a menu open still and if the item has the same lore, ensuring some random other inventory item doesn't get replaced
-                if (ChatColor.stripColor(player.getOpenInventory().getTitle()).equals(ChatColor.stripColor(config.getString("mainMenuTitle"))) && player.getOpenInventory().getItem(index).getItemMeta().getLore().equals(newItemMeta.getLore())) {
+                if (player.getOpenInventory().getTitle().equals(ChatColor.translateAlternateColorCodes('&', config.getString("mainMenuTitle"))) && player.getOpenInventory().getItem(index).getItemMeta().getLore().equals(newItemMeta.getLore())) {
                     item.setItemMeta(oldItemMeta);
                     player.getOpenInventory().setItem(index, item);
                 }

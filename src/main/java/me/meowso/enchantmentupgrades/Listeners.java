@@ -66,7 +66,7 @@ public class Listeners implements Listener {
             ItemStack itemClicked = event.getCurrentItem();
             int itemClickedIndex = event.getSlot();
 
-            if (itemClicked != null && itemClicked.hasItemMeta() && event.getSlotType() == SlotType.CONTAINER && !itemClicked.getItemMeta().getDisplayName().contains("Error")) {
+            if (itemClicked != null && itemClicked.hasItemMeta() && event.getSlotType() == SlotType.CONTAINER && !itemClicked.getItemMeta().getDisplayName().contains(config.getString("errorTitleMessage"))) {
                 if (title.equals(ChatColor.stripColor(config.getString("mainMenuTitle")))) {
                     handleEnchantmentUpgradeMenuClick(player, itemClicked, itemClickedIndex);
                 } else if (title.equals(ChatColor.stripColor(config.getString("confirmMenuTitle")))) {
@@ -93,13 +93,13 @@ public class Listeners implements Listener {
                 if (upgradeCostUtility.hasEnoughMoney(player, enchantment)) {
                     menuHandler.displayUpgradeConfirmationMenu(player, enchantment, itemClicked);
                 } else {
-                    menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, "You do not have enough " + config.getString("currencyNamePlural") + ".");
+                    menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, config.getString("errorNoMoneyMessage"));
                 }
             } else {
-                menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, "This enchantment upgrade cannot take place.");
+                menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, config.getString("errorInvalidUpgrade"));
             }
         } catch (Exception e) {
-            menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, "An error occurred determining the enchantment.");
+            menuHandler.displayUpgradeError(player, itemClicked, itemClickedIndex, config.getString("errorDeterminingEnchantMessage"));
             throw e;
         }
     }

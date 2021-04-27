@@ -1,11 +1,25 @@
 chatPrefix: "&8[&eEnchantment Upgrades&8]"
 mainMenuTitle: "Enchantment Upgrades"
 confirmMenuTitle: "Confirm Enchantment Upgrade"
-currencyNamePlural: "money" #The plural name of your currency (e.g. money, dollars, coins)
+confirmUpgradeMessage: "&a&lConfirm Upgrade"
 currencySymbolFormat: "&6$x" #The color, symbol, and format of your currency. The "x" represents the amount and will be replaced (e.g. &6$x = $1.00 in gold, &ax€ = 1.00€ in lime)
 confirmedUpgradeMessage: "&f$0&7 on &f$1&7 has been upgraded to level &f$2&7 for &f$3&7." # $0 = enchantment name, $1 = item name, $2 = level, $3 = cost (same as currencySymbolFormat)
 noEnchantmentsOnItemMessage: "&cThere are no enchantments on this item"
 clickTooltipMessage: "&7Shift + right click to view the Enchantment Upgrades Menu"
+enchantmentUpgradeLevelString: "&7Current Level: &f$0&7/&f$1" # $0 = current level, $1 = max level
+costToUpgradeString: "&7Upgrade Cost: $0" # $0 = cost
+levelToUpgradeToString: "&7Click to upgrade to level &f$0" # $0 = level to upgrade to
+upgradeEnchantNameTitleMessage: "&f&lUpgrade $0" # $0 = enchantment name
+upgradeCancelTitleMessage: "&c&lCancel Upgrade"
+upgradeItemNameMessage: "&7Item: &f$0" # $0 = item name
+upgradeEnchantNameMessage: "&7Enchantment: &f$0" # $0 = enchantment name
+upgradeLevelMessage: "&7Level Upgrade: &f$0&7 → &f$1" # $0 = current level, $1 = next level
+upgradeCostMessage: "&7Cost: &f$0" # $0 = cost
+errorTitleMessage: "&c&lError"
+errorDeterminingEnchantMessage: "&cAn error occurred determining the enchantment."
+errorNoMoneyMessage: "&cYou do not have enough money."
+errorInvalidUpgrade: "&cUpgrade cannot take place."
+errorMaxLevelMessage: "&cMaximum level reached"
 
 #Tools that can have their enchantments upgraded
 validTools:
