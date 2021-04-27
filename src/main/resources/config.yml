@@ -89,4 +89,5 @@ maximumEnchantmentLevels:
   fortune: 30
   unbreaking: 300
 
+showTooltips: true # Let users know how to use the plugin by showing a tooltip whenever you right-click on a valid item with enchantments but DON'T shift
 checkForUpdates: true
