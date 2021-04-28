@@ -25,7 +25,7 @@ public class UpgradeHandler {
 
     public void upgradeEnchantment (Player player, ItemStack itemClicked, int itemClickedIndex) {
         try {
-            Enchantment enchantment = enchantmentUtility.getEnchantmentByName(player, player.getOpenInventory().getItem(4).getItemMeta().getDisplayName().replace(config.getString("upgradeEnchantNameTitleMessage").replace("$0" ,""), "")); // Get enchantment from the title of the informational item in the confirm menu
+            Enchantment enchantment = enchantmentUtility.getEnchantmentByName(player, player.getOpenInventory().getItem(4).getItemMeta().getDisplayName().replace(ChatColor.translateAlternateColorCodes('&', config.getString("upgradeEnchantNameTitleMessage")).replace("$0" ,""), "")); // Get enchantment from the title of the informational item in the confirm menu
 
             if (canUpgrade(player, enchantment)) {
                 ItemStack itemInHand = player.getInventory().getItemInMainHand();
