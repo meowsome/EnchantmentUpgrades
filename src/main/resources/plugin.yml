@@ -1,5 +1,5 @@
 name: EnchantmentUpgrades
-version: ${project.version}
+version: 0.1.1
 main: me.meowso.enchantmentupgrades.EnchantmentUpgrades
 api-version: 1.16
 authors: [meowsome]
