@@ -5,15 +5,12 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.InputStreamReader;
 
-// Takes existing config file and writes components that are not present to it
 public class ConfigHandler {
     private FileConfiguration config;
     private YamlConfiguration defaultConfig;
     private EnchantmentUpgrades enchantmentUpgrades;
 
     public ConfigHandler(EnchantmentUpgrades enchantmentUpgrades) {
-        // Either save the existing config or generate new one
-        enchantmentUpgrades.saveDefaultConfig();
         this.enchantmentUpgrades = enchantmentUpgrades;
     }
 
