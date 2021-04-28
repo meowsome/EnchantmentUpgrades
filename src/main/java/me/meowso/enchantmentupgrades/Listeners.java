@@ -48,7 +48,8 @@ public class Listeners implements Listener {
             if (player.isSneaking())  {
                 if (item.getEnchantments().isEmpty()) player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.translateAlternateColorCodes('&', config.getString("noEnchantmentsOnItemMessage"))));
                 else menuHandler.displayUpgradeMenu(player);
-            } else if (config.getBoolean("showTooltips")) {
+            } else if (config.getBoolean("showTooltips") && !item.getEnchantments().isEmpty()) {
+                // Show information tooltip if enabled AND there are enchantments on item
                 player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(ChatColor.translateAlternateColorCodes('&', config.getString("clickTooltipMessage"))));
             }
         }
