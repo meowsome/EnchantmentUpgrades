@@ -10,6 +10,8 @@ public final class EnchantmentUpgrades extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        new ConfigHandler(this).initializeConfig();
+
         Economy economy = setupVault();
         if (economy == null) {
             getLogger().severe("Please install and enable Vault");
@@ -18,7 +20,6 @@ public final class EnchantmentUpgrades extends JavaPlugin {
         }
 
         getServer().getPluginManager().registerEvents(new Listeners(this, economy), this);
-        saveDefaultConfig();
 
         try {
             updateChecker();
