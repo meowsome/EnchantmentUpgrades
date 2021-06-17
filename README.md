@@ -25,7 +25,7 @@ Enchantment Upgrades Minecraft plugin. Upgrade the existing enchantments on any 
 
 ### Features
 - A fun addition for Prison servers
-- Compatible with any plugin that adds more enchantments by - registering them
+- Compatible with any plugin that adds more enchantments by registering them
 - Customize menu items and titles
 - Customize currency name, color, symbol, and format
 - Specify which tools that enchantments can be upgraded on
